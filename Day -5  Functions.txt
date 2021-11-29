@@ -1,0 +1,250 @@
+let inpArr = [0, 1, 2, 3, 5, 10, 11, 12, 13, 55, 66, 49, 213];
+
+// a. Print odd numbers in an array
+let odd = function () {
+  for (var i = 0; i < inpArr.length; i++) {
+    if (inpArr[i] % 2 !== 0) {
+      console.log(inpArr[i]);
+    }
+  }
+};
+
+odd();
+
+(function () {
+  for (var i = 0; i < inpArr.length; i++) {
+    if (inpArr[i] % 2 !== 0) {
+      console.log(inpArr[i]);
+    }
+  }
+})();
+
+// b. Convert all the strings to title caps in a string array
+var arr = ["guvi", "geek", "zen", "fullstack"];
+var titleCaps = function (inpArr) {
+  for (var i = 0; i < inpArr.length; i++) {
+    console.log(inpArr[i][0].toUpperCase() + inpArr[i].substr(1));
+  }
+};
+titleCaps(arr);
+
+(function () {
+  for (var i = 0; i < arr.length; i++) {
+    console.log(arr[i][0].toUpperCase() + arr[i].substr(1));
+  }
+})();
+
+// c. Sum of all numbers in an array
+let sum = function (arr) {
+  console.log(arr.reduce((a, b) => a + b));
+};
+
+sum(inpArr);
+
+(function () {
+  console.log(inpArr.reduce((a, b) => a + b));
+})();
+
+// d. Return all the prime numbers in an array
+
+let prime = function (inpNum) {
+  for (var i = 2; i * i <= inpNum; i++) {
+    if (inpNum % i === 0) return false;
+  }
+  return inpNum > 1;
+};
+
+console.log(inpArr.filter(prime));
+
+(function () {
+  console.log(
+    inpArr.filter((inpNum) => {
+      for (var i = 2; i * i <= inpNum; i++) {
+        if (inpNum % i === 0) return false;
+      }
+      return inpNum > 1;
+    })
+  );
+})();
+
+// e. Return all the palindromes in an array
+let strArr = [
+  "redivider",
+  "civic",
+  "radar",
+  "kelvin",
+  "level",
+  "rotor",
+  "room",
+  "reviver",
+  "racecar",
+  "madam",
+  "solo",
+  "refer",
+];
+
+let palindrome = function (arr) {
+  let outArr = [];
+  for (item of arr) {
+    reversed = item.split("").reverse().join("");
+    if (item === reversed) outArr.push(item);
+  }
+  return outArr;
+};
+
+console.log(...palindrome(strArr));
+
+(function () {
+  let outArr = [];
+  for (item of strArr) {
+    reversed = item.split("").reverse().join("");
+    if (item === reversed) outArr.push(item);
+  }
+  console.log(...outArr);
+})();
+
+// f. Return median of two sorted arrays of same size
+
+let arr1 = [1, 12, 15, 26, 38];
+let arr2 = [2, 13, 17, 30, 45];
+
+let median = function (arr1, arr2) {
+  let mergedArr = arr1.concat(arr2).sort((a, b) => a - b);
+  let n = mergedArr.length;
+
+  if (n % 2 !== 0) {
+    console.log(mergedArr[Math.floor(n / 2)]);
+  } else {
+    console.log((mergedArr[n / 2] + mergedArr[n / 2 - 1]) / 2);
+  }
+};
+
+median(arr1, arr2);
+
+(function () {
+  let mergedArr = arr1.concat(arr2).sort((a, b) => a - b);
+  let n = mergedArr.length;
+
+  if (n % 2 !== 0) {
+    console.log(mergedArr[Math.floor(n / 2)]);
+  } else {
+    console.log((mergedArr[n / 2] + mergedArr[n / 2 - 1]) / 2);
+  }
+})();
+
+// g. Remove duplicates from an array
+let dupArr = ["guvi", "geek", "guvi", "duplicate", "geeK"];
+
+var res = function (arr) {
+  newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (newArr.indexOf(arr[i]) == -1) {
+      newArr.push(arr[i]);
+    }
+  }
+  console.log(newArr);
+};
+
+res(dupArr);
+
+(function () {
+  newArr = [];
+  for (var i = 0; i < dupArr.length; i++) {
+    if (newArr.indexOf(dupArr[i]) == -1) {
+      newArr.push(dupArr[i]);
+    }
+  }
+  console.log(newArr);
+})();
+
+// h. Rotate an array by k times
+
+var arr = [1, 2, 3, 6, 8, 6, 1, 9, 10, 12, 13];
+var k = 5;
+
+let rotate = function (arr, k) {
+  var out = arr.slice(k, arr.length);
+  var count = out.length;
+  for (var i = 0; i < k; i++) {
+    out[count] = arr[i];
+    count += 1;
+  }
+  console.log(out);
+};
+rotate(arr, k);
+
+(function () {
+  var out = arr.slice(k, arr.length);
+  var count = out.length;
+  for (var i = 0; i < k; i++) {
+    out[count] = arr[i];
+    count += 1;
+  }
+  console.log(out);
+})();
+
+// ---------------------------------------------------------------------------
+// Do the below programs in arrow functions
+
+// a. Print odd numbers in an array
+let odd = () => {
+  for (var i = 0; i < inpArr.length; i++) {
+    if (inpArr[i] % 2 !== 0) {
+      console.log(inpArr[i]);
+    }
+  }
+};
+
+odd();
+
+// b. Convert all the strings to title caps in a string array
+var arr = ["guvi", "geek", "zen", "fullstack"];
+
+var titleCaps = (inpArr) => {
+  for (var i = 0; i < inpArr.length; i++) {
+    console.log(inpArr[i][0].toUpperCase() + inpArr[i].substr(1));
+  }
+};
+titleCaps(arr);
+
+// c. Sum of all numbers in an array
+let sum = (arr) => console.log(arr.reduce((a, b) => a + b));
+sum(inpArr);
+
+// d. Return all the prime numbers in an array
+
+let prime = (inpNum) => {
+  for (var i = 2; i * i <= inpNum; i++) {
+    if (inpNum % i === 0) return false;
+  }
+  return inpNum > 1;
+};
+
+console.log(inpArr.filter(prime));
+
+// e. Return all the palindromes in an array
+let strArr = [
+  "redivider",
+  "civic",
+  "radar",
+  "kelvin",
+  "level",
+  "rotor",
+  "room",
+  "reviver",
+  "racecar",
+  "madam",
+  "solo",
+  "refer",
+];
+
+let palindrome = (arr) => {
+  let outArr = [];
+  for (item of arr) {
+    reversed = item.split("").reverse().join("");
+    if (item === reversed) outArr.push(item);
+  }
+  return outArr;
+};
+
+console.log(...palindrome(strArr));
